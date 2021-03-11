@@ -16,7 +16,9 @@ class OrdersRepository implements IOrdersRepository {
       customer,
       order_products: products,
     });
+
     await this.ormRepository.save(order);
+
     return order;
   }
 
@@ -24,6 +26,7 @@ class OrdersRepository implements IOrdersRepository {
     const order = this.ormRepository.findOne(id, {
       relations: ['order_products', 'customer'],
     });
+
     return order;
   }
 }
